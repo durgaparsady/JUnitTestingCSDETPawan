@@ -1,0 +1,15 @@
+package com.duggu.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.duggu.entity.Country;
+
+@Repository
+public interface CountryRepo extends JpaRepository<Country, Integer>{
+	  @Query(value = "SELECT * FROM country WHERE country_name = ?1", nativeQuery = true) 
+	   Country findByCountryName(String name);
+
+ 
+}
